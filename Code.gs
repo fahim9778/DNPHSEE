@@ -997,7 +997,8 @@ function getOrCreateLabels_() {
     if (unique.length > 1) {
       throw Error('Conflicting old and new Gmail labels for ' + original +
         '. Stop: labels were not merged. Resolve duplicate labels before migrating.');
-    }    const source = cached || found[0] || null;
+    }
+    const source = cached || found[0] || null;
     if (source && byName.has(target) && byName.get(target).id !== source.id) {
       throw Error('Target label ' + target + ' already exists with a different ID. No rename performed.');
     }
