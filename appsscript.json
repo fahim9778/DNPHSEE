@@ -1,0 +1,39 @@
+{
+  "timeZone": "Asia/Dhaka",
+  "runtimeVersion": "V8",
+  "exceptionLogging": "STACKDRIVER",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/gmail.modify",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/script.scriptapp",
+    "https://www.googleapis.com/auth/gmail.addons.execute",
+    "https://www.googleapis.com/auth/gmail.addons.current.message.readonly"
+  ],
+  "dependencies": {
+    "enabledAdvancedServices": [
+      {
+        "userSymbol": "Gmail",
+        "serviceId": "gmail",
+        "version": "v1"
+      }
+    ]
+  },
+  "addOns": {
+    "common": {
+      "name": "DNPHSEE",
+      "logoUrl": "https://raw.githubusercontent.com/fahim9778/DNPHSEE/main/assets/AcademicFirewall_128.png",
+      "layoutProperties": {
+        "primaryColor": "#324B64",
+        "secondaryColor": "#4B6B88"
+      }
+    },
+    "gmail": {
+      "contextualTriggers": [
+        {
+          "unconditional": {},
+          "onTriggerFunction": "af130OpenMessage"
+        }
+      ]
+    }
+  }
+}
