@@ -30,6 +30,28 @@ DNPHSEE is a lightweight, self-hosted Gmail inbox firewall for people who receiv
 
 Full instructions: **[INSTALL.md](INSTALL.md)**.
 
+## Your Private Ledger — see what DNPHSEE is doing
+
+DNPHSEE creates a **Google Sheets Private Ledger in your own Google account**. It is your audit trail: you can inspect the firewall's decisions instead of trusting an invisible filter. **Each installation has its own ledger; nothing is shared with other users or uploaded to this GitHub repository.**
+
+**How to open it:**
+
+1. Open your DNPHSEE project in [Google Apps Script](https://script.google.com/).
+2. Select **`statusFirewall()`** from the function dropdown and click **Run**.
+3. Expand the **Execution log**, find the **Private Ledger URL**, and open that Google Sheets link.
+4. Inspect the tabs below. Start with **`Audit`**, especially while the firewall is in **DRY_RUN**.
+
+| Sheet tab | What to check |
+| --- | --- |
+| **`Audit`** | Review logged processing decisions and actions. While in DRY_RUN, look for **`WOULD_ARCHIVE`** entries: messages DNPHSEE identified but **did not archive**. |
+| **`BlockedKeys`** | Inspect recorded conversation/message identifiers used to recognize replies to previously blocked conversations. |
+| **`AllowedKeys`** | Review remembered allow/keep identifiers that help prevent unwanted suppression. |
+| **`Pending`** | Check items awaiting review or that the system could not confidently resolve. |
+
+**Before turning on LIVE:** Compare suspicious Audit entries with the actual emails in Gmail. Check the `ZZ/AF_R` review label and verify that student messages, examination/admission-test invitations, and invigilation or proctoring duties are not being treated as noise. Use `goLive()` only when you're comfortable with the results; `pauseSuppression()` returns the script to DRY_RUN.
+
+**Privacy and safety:** The ledger may include real senders, subjects and email identifiers. **Never publish, share publicly, or attach it to a GitHub issue.** Avoid manually changing identifier cells, which may break remembered blocking/allowing. See [INSTALL.md](INSTALL.md) for setup and recovery details.
+
 ## Key controls
 
 | Apps Script function | Purpose |
