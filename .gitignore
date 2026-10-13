@@ -1,0 +1,14 @@
+# Never commit generated private data or credentials
+.env
+.env.*
+*.secret
+*.log
+credentials.json
+token.json
+private-ledger.*
+ledger-export.*
+*.xlsx
+*.csv
+.DS_Store
+node_modules/
+coverage/
